@@ -1,7 +1,4 @@
 
-
-
-
 Ideas
 1. temple run
 
@@ -19,5 +16,9 @@ Ideas
   -> visualizing effects:
   make the car bigger, and more visually appealing
   (create a road and a river)
-  
 
+6. Bees:
+'bees' bounce around the screen and the player trys to avoid them ('cause deadly allergies!!!). 
+3 epi-pens (lifes) that can be increased or decreased by consumables or dying.
+reset.
+0 epipens == game over
