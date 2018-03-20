@@ -1,0 +1,7 @@
+
+State Machine - |part3|control:c0|current_state
+Name current_state.S_DRAW current_state.S_CLEAR current_state.S_LOAD_WAIT current_state.S_LOAD_VAL 
+current_state.S_LOAD_VAL 0 0 0 0 
+current_state.S_LOAD_WAIT 0 0 1 1 
+current_state.S_CLEAR 0 1 0 1 
+current_state.S_DRAW 1 0 0 1 
