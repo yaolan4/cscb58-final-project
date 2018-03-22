@@ -1,0 +1,210 @@
+
+State Machine - |proj|control:car_12_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_11_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_10_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_9_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_8_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_7_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_6_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_5_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_4_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_3_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_2_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_1_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:car_0_c|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |proj|control:c0|curr
+Name curr.cleanUp curr.after_drawing curr.temp_selecting_state curr.print_up curr.print_down curr.print_left curr.print_right curr.clear_all curr.S_LOAD_Y curr.S_WAIT_Y curr.S_CLEAR curr.S_LOAD_X 
+curr.S_LOAD_X 0 0 0 0 0 0 0 0 0 0 0 0 
+curr.S_CLEAR 0 0 0 0 0 0 0 0 0 0 1 1 
+curr.S_WAIT_Y 0 0 0 0 0 0 0 0 0 1 0 1 
+curr.S_LOAD_Y 0 0 0 0 0 0 0 0 1 0 0 1 
+curr.clear_all 0 0 0 0 0 0 0 1 0 0 0 1 
+curr.print_right 0 0 0 0 0 0 1 0 0 0 0 1 
+curr.print_left 0 0 0 0 0 1 0 0 0 0 0 1 
+curr.print_down 0 0 0 0 1 0 0 0 0 0 0 1 
+curr.print_up 0 0 0 1 0 0 0 0 0 0 0 1 
+curr.temp_selecting_state 0 0 1 0 0 0 0 0 0 0 0 1 
+curr.after_drawing 0 1 0 0 0 0 0 0 0 0 0 1 
+curr.cleanUp 1 0 0 0 0 0 0 0 0 0 0 1 
