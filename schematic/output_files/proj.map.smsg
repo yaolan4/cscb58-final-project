@@ -1,2 +1,2 @@
-Warning (10268): Verilog HDL information at start.v(32): always construct contains both blocking and non-blocking assignments File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 32
-Info (10281): Verilog HDL Declaration information at start.v(7): object "clear" differs only in case from object "CLEAR" in the same scope File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 7
+Warning (10268): Verilog HDL information at start.v(139): always construct contains both blocking and non-blocking assignments File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 139
+Info (10281): Verilog HDL Declaration information at start.v(114): object "clear" differs only in case from object "CLEAR" in the same scope File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 114

@@ -1,5 +1,5 @@
 Fitter report for proj
-Thu Mar 22 21:01:23 2018
+Thu Mar 22 22:50:54 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -59,7 +59,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Thu Mar 22 21:01:23 2018       ;
+; Fitter Status                      ; Successful - Thu Mar 22 22:50:54 2018       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; proj                                        ;
 ; Top-level Entity Name              ; proj                                        ;
@@ -1485,12 +1485,12 @@ Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/output_files/proj.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 1564 megabytes
-    Info: Processing ended: Thu Mar 22 21:01:23 2018
-    Info: Elapsed time: 00:00:09
+    Info: Peak virtual memory: 1561 megabytes
+    Info: Processing ended: Thu Mar 22 22:50:54 2018
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:10
 
 

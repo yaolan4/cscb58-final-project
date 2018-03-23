@@ -1,5 +1,5 @@
 Analysis & Synthesis report for proj
-Thu Mar 22 21:01:14 2018
+Thu Mar 22 22:50:45 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -48,7 +48,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Mar 22 21:01:14 2018       ;
+; Analysis & Synthesis Status        ; Successful - Thu Mar 22 22:50:45 2018       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; proj                                        ;
 ; Top-level Entity Name              ; proj                                        ;
@@ -233,26 +233,24 @@ Encoding Type:  One-Hot
 ; Register name                           ; Reason for Removal                   ;
 +-----------------------------------------+--------------------------------------+
 ; control:c0|rate_divider:rd|count[0..27] ; Stuck at GND due to stuck port clock ;
-; control:c0|curr_state~2                 ; Lost fanout                          ;
-; control:c0|curr_state~3                 ; Lost fanout                          ;
-; control:c0|curr_state.RESET             ; Stuck at GND due to stuck port clock ;
-; control:c0|curr_state.SELECT_DIR        ; Stuck at GND due to stuck port clock ;
-; control:c0|curr_state.UPDATE_XY         ; Lost fanout                          ;
+; control:c0|curr_state.RESET             ; Lost fanout                          ;
+; control:c0|curr_state.SELECT_DIR        ; Lost fanout                          ;
 ; control:c0|curr_state.MOVE              ; Lost fanout                          ;
+; control:c0|curr_state~2                 ; Lost fanout                          ;
+; control:c0|curr_state.UPDATE_XY         ; Lost fanout                          ;
+; control:c0|curr_state~3                 ; Lost fanout                          ;
 ; control:c0|curr_state.CLEAR             ; Lost fanout                          ;
 ; Total Number of Removed Registers = 35  ;                                      ;
 +-----------------------------------------+--------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                               ;
-+----------------------------------+-------------------------+--------------------------------------------------------------+
-; Register name                    ; Reason for Removal      ; Registers Removed due to This Register                       ;
-+----------------------------------+-------------------------+--------------------------------------------------------------+
-; control:c0|curr_state~2          ; Lost Fanouts            ; control:c0|curr_state.UPDATE_XY, control:c0|curr_state.CLEAR ;
-; control:c0|curr_state.SELECT_DIR ; Stuck at GND            ; control:c0|curr_state.MOVE                                   ;
-;                                  ; due to stuck port clock ;                                                              ;
-+----------------------------------+-------------------------+--------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                     ;
++-----------------------------+--------------------+--------------------------------------------------------------+
+; Register name               ; Reason for Removal ; Registers Removed due to This Register                       ;
++-----------------------------+--------------------+--------------------------------------------------------------+
+; control:c0|curr_state.RESET ; Lost Fanouts       ; control:c0|curr_state.UPDATE_XY, control:c0|curr_state.CLEAR ;
++-----------------------------+--------------------+--------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -270,41 +268,32 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------+
-; Port Connectivity Checks: "control:c0"           ;
-+----------------+-------+----------+--------------+
-; Port           ; Type  ; Severity ; Details      ;
-+----------------+-------+----------+--------------+
-; clk            ; Input ; Info     ; Stuck at VCC ;
-; rate[27..25]   ; Input ; Info     ; Stuck at GND ;
-; rate[23..21]   ; Input ; Info     ; Stuck at GND ;
-; rate[19..17]   ; Input ; Info     ; Stuck at GND ;
-; rate[15..13]   ; Input ; Info     ; Stuck at GND ;
-; rate[11..9]    ; Input ; Info     ; Stuck at GND ;
-; rate[7..5]     ; Input ; Info     ; Stuck at GND ;
-; rate[3..1]     ; Input ; Info     ; Stuck at GND ;
-; rate[24]       ; Input ; Info     ; Stuck at VCC ;
-; rate[20]       ; Input ; Info     ; Stuck at VCC ;
-; rate[16]       ; Input ; Info     ; Stuck at VCC ;
-; rate[12]       ; Input ; Info     ; Stuck at VCC ;
-; rate[8]        ; Input ; Info     ; Stuck at VCC ;
-; rate[4]        ; Input ; Info     ; Stuck at VCC ;
-; rate[0]        ; Input ; Info     ; Stuck at VCC ;
-; offset[27..25] ; Input ; Info     ; Stuck at GND ;
-; offset[23..21] ; Input ; Info     ; Stuck at GND ;
-; offset[19..17] ; Input ; Info     ; Stuck at GND ;
-; offset[15..13] ; Input ; Info     ; Stuck at GND ;
-; offset[11..9]  ; Input ; Info     ; Stuck at GND ;
-; offset[7..5]   ; Input ; Info     ; Stuck at GND ;
-; offset[3..1]   ; Input ; Info     ; Stuck at GND ;
-; offset[24]     ; Input ; Info     ; Stuck at VCC ;
-; offset[20]     ; Input ; Info     ; Stuck at VCC ;
-; offset[16]     ; Input ; Info     ; Stuck at VCC ;
-; offset[12]     ; Input ; Info     ; Stuck at VCC ;
-; offset[8]      ; Input ; Info     ; Stuck at VCC ;
-; offset[4]      ; Input ; Info     ; Stuck at VCC ;
-; offset[0]      ; Input ; Info     ; Stuck at VCC ;
-+----------------+-------+----------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control:c0"                                                                                                                                                                                  ;
++----------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                                                                                                                            ;
++----------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; clk            ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; game_reset     ; Input  ; Warning  ; Input port expression (28 bits) is wider than the input port (1 bits) it drives.  The 27 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; game_reset[-1] ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; rate[27..25]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; rate[23..21]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; rate[19..17]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; rate[15..13]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; rate[11..9]    ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; rate[7..5]     ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; rate[3..1]     ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; rate[24]       ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; rate[20]       ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; rate[16]       ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; rate[12]       ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; rate[8]        ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; rate[4]        ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; rate[0]        ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; offset         ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (28 bits) it drives.  Extra input bit(s) "offset[27..1]" will be connected to GND.                                   ;
+; clear          ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (4 bits) it drives.  The 3 most-significant bit(s) in the port expression will be connected to GND.              ;
+; dir_out        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                                                           ;
++----------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -337,13 +326,14 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Mar 22 21:01:05 2018
+    Info: Processing started: Thu Mar 22 22:50:36 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off proj -c proj
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 3 design units, including 3 entities, in source file start.v
-    Info (12023): Found entity 1: control File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 1
-    Info (12023): Found entity 2: rate_divider File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 61
-    Info (12023): Found entity 3: proj File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 81
+Info (12021): Found 4 design units, including 4 entities, in source file start.v
+    Info (12023): Found entity 1: datapath File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 1
+    Info (12023): Found entity 2: control File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 107
+    Info (12023): Found entity 3: rate_divider File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 168
+    Info (12023): Found entity 4: proj File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 188
 Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter/vga_controller.v
     Info (12023): Found entity 1: vga_controller File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/vga_adapter/vga_controller.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter/vga_address_translator.v
@@ -354,45 +344,46 @@ Info (12021): Found 1 design units, including 1 entities, in source file vga_ada
     Info (12023): Found entity 1: vga_pll File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/vga_adapter/vga_pll.v Line: 36
 Info (12021): Found 0 design units, including 0 entities, in source file proj.v
 Info (12127): Elaborating entity "proj" for the top level hierarchy
-Warning (10034): Output port "LEDR[5..3]" at start.v(83) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 85
-Info (10264): Verilog HDL Case Statement information at start.v(33): all case item expressions in this case statement are onehot File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 33
-Warning (10034): Output port "dir_out" at start.v(9) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 9
-Warning (10034): Output port "load_xy" at start.v(6) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 6
-Warning (10034): Output port "clear" at start.v(7) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 7
-Info (12128): Elaborating entity "rate_divider" for hierarchy "control:c0|rate_divider:rd" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 29
-Warning (10230): Verilog HDL assignment warning at start.v(69): truncated value with size 32 to match size of target (1) File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 69
-Warning (10230): Verilog HDL assignment warning at start.v(76): truncated value with size 32 to match size of target (28) File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 76
+Warning (10034): Output port "LEDR[5..3]" at start.v(190) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 192
+Info (10264): Verilog HDL Case Statement information at start.v(140): all case item expressions in this case statement are onehot File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 140
+Warning (10034): Output port "dir_out" at start.v(116) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 116
+Warning (10034): Output port "load_xy" at start.v(113) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 113
+Warning (10034): Output port "clear" at start.v(114) has no driver File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 114
+Info (12128): Elaborating entity "rate_divider" for hierarchy "control:c0|rate_divider:rd" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 136
+Warning (10230): Verilog HDL assignment warning at start.v(176): truncated value with size 32 to match size of target (1) File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 176
+Warning (10230): Verilog HDL assignment warning at start.v(183): truncated value with size 32 to match size of target (28) File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 183
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[1]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[2]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[8]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-    Warning (13410): Pin "LEDR[9]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 83
-Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 190
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/output_files/proj.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 9 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[1]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[2]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[3]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[4]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[5]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[6]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[7]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[8]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
-    Warning (15610): No output dependent on input pin "SW[9]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 82
+    Warning (15610): No output dependent on input pin "SW[1]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[2]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[3]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[4]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[5]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[6]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[7]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[8]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
+    Warning (15610): No output dependent on input pin "SW[9]" File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 189
 Info (21057): Implemented 20 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
     Info (21059): Implemented 10 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 27 warnings
-    Info: Peak virtual memory: 1226 megabytes
-    Info: Processing ended: Thu Mar 22 21:01:14 2018
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 1224 megabytes
+    Info: Processing ended: Thu Mar 22 22:50:45 2018
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:19
 
