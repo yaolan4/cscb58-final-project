@@ -8,6 +8,23 @@ module proj (
 	output [17:0] LEDR);
 	
 	
+
+    mechanics mech(
+        // Inputs
+        .reset_n(),
+        .user_x(),
+        .user_y(),
+        .bees_x(),
+        .bees_y(),
+        // Outputs
+        .game_reset(),
+        .game_over(),
+        .lives(),
+        .score(),
+        .high_score()
+        );
+
+
     wire [3:0] player_dir;
     wire player_load_xy;
     wire player_clear;
@@ -20,8 +37,6 @@ module proj (
     wire player_writeEn;
     reg [27:0] player_rate;
     reg [27:0] player_offset;
-
-    
 
     datapath data_player(// Input
                         .clk(CLOCK_50),
@@ -50,6 +65,7 @@ module proj (
                         .clear(player_clear),
                         .dir_out(player_dir)
                         );
+
 
     // fuck you quartus
 endmodule 

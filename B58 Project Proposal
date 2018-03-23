@@ -95,9 +95,18 @@ Clicky					Fides Linga, Matu Manogaran, Angela Zavaleta Bernuy
 Updates
 -------
 
-<Example update. Delte this and add your own updates after each lab session>
-Week 1: We built the hardware and tested the sensors. The distance sensor we had intended to use didn't work as
-expected (wasn't precise enough at further distances, only seems to work accurately within 5-10cm), so instead
-we've decided to change the project to use a light sensor instead. Had trouble getting the FSM to work (kept
-getting stuck in state 101, took longer to debug than expected), so we may not be able to add the
-high score feature, have updated that in the project description as (optional).
+Week 1: We tested the external joystick, and had to used the breadboard to connect it up to the FPGA, with some trial and error.
+Considering this was the first time we did anything more electrical than flipping a switch, i'd say we did decently.
+We also figured out how to make a character (currently just a square) move around the screen using keys (which we will replace
+with the joystick now that we’ve figured it out), and also have prototyped the FSM in order to be able to clear the screen between 
+movement properly. Unfortunately, due to lack of time we have not been able to test this out, but we do have time booked in the
+makerspace before the next lab so we can get more progress made towards having working basic mechanics of the game.
+
+Week 2: We revised our FSM for our control module and our datapath module to get our pixel to move using four
+directions but with clearing its previous position. Also developed code so that we can utilize the joystick and eventually replace the keys on the board.
+This took longer than expected so we were not able to add other bees. We plan to have modules for high score, other
+bees on the screen, and collision detection. The high score will be time based on a rate divider and the goal of the player is to stay alive
+as long as possible without getting hit by the bees. We will test this in the lab of week 3.
+
+Week 3:
+
