@@ -30,30 +30,21 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "proj")
-  (DATE "03/22/2018 22:51:02")
+  (DATE "03/23/2018 15:09:46")
   (VENDOR "Altera")
   (PROGRAM "Quartus Prime")
   (VERSION "Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition")
   (DIVIDER .)
   (TIMESCALE 1 ps)
 
+	// No Timing Cells with timing info are found in the compiled design. A dummy dff Timing Cell is created.
   (CELL
-    (CELLTYPE "cycloneive_io_obuf")
-    (INSTANCE LEDR\[0\]\~output)
-    (DELAY
-      (ABSOLUTE
-        (PORT i (3166:3166:3166) (3394:3394:3394))
-        (IOPATH i o (2878:2878:2878) (2836:2836:2836))
-      )
-    )
+    (CELLTYPE "dff")
+    (INSTANCE * )
   )
+	// No Timing Cells with timing info are found in the compiled design. A dummy dff Timing Cell is created.
   (CELL
-    (CELLTYPE "cycloneive_io_ibuf")
-    (INSTANCE SW\[0\]\~input)
-    (DELAY
-      (ABSOLUTE
-        (IOPATH i o (669:669:669) (775:775:775))
-      )
-    )
+    (CELLTYPE "dff")
+    (INSTANCE * )
   )
 )

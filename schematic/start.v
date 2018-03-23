@@ -1,21 +1,7 @@
-// Top level module. Handles instantiation, controls,
-// Also potentially bouncing of bees. Might want to refactor this into mechanics
-
-module proj (
-	input CLOCK_50,
-	input [17:0] SW,
-	output [17:0] LEDR);
-	
-	
-    control c0(1'b1, SW[7:4], SW[9],
-        28'h1111111, 28'h1111111, LEDR[1], LEDR[2], LEDR[9:6]);
-    assign LEDR[0] = SW[0];
-    // fuck you quartus
-endmodule 
-
 // Module that handles all the game mechanics
 // including user collisions, boundary detection,
 // scoring, lives, etc
+
 module mechanics (
         // Inputs
         input reset_n,
@@ -49,9 +35,9 @@ module mechanics (
     // Placeholder values, need to change these to
     // appropriate screen boundary vaues in pixels
     localparam LEFTEDGE     = 7'b0000000;
-    localparam RIGHTEDGE    = 7'b111111;
+    localparam RIGHTEDGE    = 7'b1111111;
     localparam TOPEDGE      = 7'b0000000;
-    localparam BOTTOMEDGE   = 7'b111111;
+    localparam BOTTOMEDGE   = 7'b1111111;
     
 
     wire bees_collided, edges_collided;
@@ -60,6 +46,9 @@ module mechanics (
 	 
 	 // Maybe refactor this, avoided inputting individually
 	 // because code gets really messy really fast.
+
+    
+    // Just for testing single user
     assign bees_collided = 
         (user_x == bees_x[6:  0] && user_y == bees_y[6:  0]) ||
         (user_x == bees_x[13: 7] && user_y == bees_y[13: 7]) ||
