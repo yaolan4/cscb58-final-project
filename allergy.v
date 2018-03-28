@@ -35,7 +35,7 @@ module allergy
 	output	[9:0]	VGA_B;   				//	VGA Blue[9:0]
 
 	wire resetn;
-	assign resetn = KEY[0];
+	assign resetn = SW[0];
 
 	// Create the colour, x, y and writeEn wires that are inputs to the controller.
 	wire [2:0] outcolour;
@@ -79,8 +79,8 @@ module allergy
 	baby B0(
 		.CLOCK_50(CLOCK_50),
 		.resetn(resetn),
-		.xin(8'd10),
-		.yin(7'd10),
+		.xin(8'd8),
+		.yin(7'd8),
 		.colourin(3'b111),
 
 		// cycle per second, not -1
@@ -143,14 +143,22 @@ module allergy
 	/////////////////////////// CHOOSE MOVEMENT INSTANTIATION ////////////////////////////////
 	wire [1:0] life;
 	chooseMovement CM(
-	.clk(CLOCK_50),
+		.clk(CLOCK_50),
+		.inlife(2'b11),
+		
+		.outcolour0(outcolour0),
+		.outx0(outx0),
+		.outy0(outy0),
+		.writeEn0(writeEn0),
+		
 		.outcolour1(outcolour1),
-		.outcolour2(outcolour2),
 		.outx1(outx1),
-		.outx2(outx2),
 		.outy1(outy1),
-		.outy2(outy2),
 		.writeEn1(writeEn1),
+
+		.outcolour2(outcolour2),
+		.outx2(outx2),
+		.outy2(outy2),
 		.writeEn2(writeEn2),
 
 		.outcolour(outcolour),
@@ -171,12 +179,14 @@ endmodule
 // might need return value to show which went on where... test first then remove //////////////////////////////////////////////////**************
 module chooseMovement(
 	input clk,
+	
+	input [1:0] inlife,
 
 	input [2:0] outcolour0,
 	input [7:0] outx0,
 	input [6:0] outy0,
 	input [0:0] writeEn0,
-
+	
 	input [2:0] outcolour1,
 	input [7:0] outx1,
 	input [6:0] outy1,
@@ -197,6 +207,7 @@ module chooseMovement(
 
 	always @(posedge clk)
     begin
+	  lives <= 2'b11;
 		if(lives >= 1'b0) 
 		begin
 			if(writeEn0) //player
