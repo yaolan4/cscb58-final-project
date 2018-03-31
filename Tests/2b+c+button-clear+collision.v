@@ -1,4 +1,4 @@
-// +test with 2 bees and a char; +buttons; -FSM clear; -collision
+// +test with 2 bees and a char; +joystick; -FSM clear; +collision
 
 `timescale 1ns / 1ns // `timescale time_unit/time_precision
 
@@ -8,6 +8,9 @@ module beehive
 		// Your inputs and outputs here
         KEY,
         SW,
+		HEX0,
+		HEX2,
+		HEX3,
 
 		// The ports below are for the VGA output.  Do not change.
 		VGA_CLK,   						//	VGA Clock
@@ -24,6 +27,10 @@ module beehive
 	input	CLOCK_50;				    // 50 MHz Clock
 	input [9:0] SW;
 	input [3:0] KEY;
+	input [10:5]GPIO;	// 5:x, 7:y, 9:sw
+	output [6:0]HEX0;
+	output [6:0]HEX2;
+	output [6:0]HEX3;
 
 	// Do not change the following outputs
 	output			VGA_CLK;   				//	VGA Clock
@@ -72,6 +79,7 @@ module beehive
 	wire [7:0] outx0;
 	wire [6:0] outy0;
 	wire [0:0] writeEn0;
+	wire [0:0]strt;
 
 	baby B0(
 			.CLOCK_50(CLOCK_50),
@@ -87,7 +95,9 @@ module beehive
 			.outx(outx0),
 			.outy(outy0),
 			.outcolour(outcolour0),
-			.writeEn(writeEn0)
+			.writeEn(writeEn0),
+
+			.strt(strt)
 			);
 	////////////////////////// END BOY INSTANTIATION //////////////////////////
 
@@ -148,6 +158,8 @@ module beehive
 
 	chooseMovement CM(
 	    .CLOCK_50(CLOCK_50),
+		.strt(strt),
+		.resetn(resetn),
 
 		// wires from char
 	    .outcolour0(outcolour0),
@@ -171,18 +183,63 @@ module beehive
 		.outcolour(outcolour),
 		.outx(outx),
 		.outy(outy),
-		.writeEn(writeEn)
+		.writeEn(writeEn),
+
+		.deaths(deaths),
+		.reset_score(reset_score)
 		);
 	///////////////////////// END CHOOSE MOVEMENT INSTANTIATION ///////////////
+
+	////////////////////////////// SCORE AND LIVES ////////////////////////////
+	wire [1:0]deaths;
+	wire reset_score, timer;
+
+	rateDivider score_divider(
+		.clock(CLOCK_50),
+		.cycleload(28'b0010111110101111000010000000),
+		.Enable(timer)
+	);
+
+	reg [7:0]score;
+
+	always@(posedge timer or posedge resetn or posedge reset_score)
+	begin
+		if(reset_score == 1'b1)
+			score[7:0] <= 8'd0;
+		else if (resetn == 1'b1)
+			score[7:0] <= 8'd0;
+		else
+			score <= score + 1'b1;
+	end
+
+	hex_display h0(
+		.IN({2'b00, 2'd3 - deaths}),
+		.OUT(HEX0[6:0])
+	);
+
+	hex_display h2(
+		.IN(score[3:0]),
+		.OUT(HEX2[6:0])
+	);
+
+	hex_display h3(
+		.IN(score[7:4]),
+		.OUT(HEX3[6:0])
+	);
+	/////////////////////////// END SCORE AND LIVES ////////////////////////////
+
 
 endmodule
 
 // chooses which object is moved on VGA and clears
-module chooseMovement( CLOCK_50, outcolour0, outx0, outy0, writeEn0,
+module chooseMovement( CLOCK_50, strt,  resetn, outcolour0, outx0, outy0, writeEn0,
 						outcolour1, outx1, outy1, writeEn1,
 						outcolour2, outx2, outy2, writeEn2,
-						outcolour, outx, outy, writeEn);
-    input CLOCK_50;
+						outcolour, outx, outy, writeEn,
+						deaths, reset_score);
+	input CLOCK_50;
+	input strt;
+	input resetn;
 
     input [2:0] outcolour0;
     input [7:0] outx0;
@@ -203,6 +260,9 @@ module chooseMovement( CLOCK_50, outcolour0, outx0, outy0, writeEn0,
     output reg [7:0] outx;
     output reg [6:0] outy;
     output reg [0:0] writeEn;
+
+	output [1:0] deaths;
+	output reset_score;
 
 	always @(posedge CLOCK_50)
 	begin
@@ -233,10 +293,71 @@ module chooseMovement( CLOCK_50, outcolour0, outx0, outy0, writeEn0,
 			end
 	end
 
+	deaths life(
+		.CLOCK_50(CLOCK_50),
+		.strt(strt),
+		.resetn(resetn),
+
+		// wires from char
+		.outx0(outx0),
+		.outy0(outy0),
+
+        // wires from b1
+		.outx1(outx1),
+		.outy1(outy1),
+
+        // wires form b2
+		.outx2(outx2),
+		.outy2(outy2),
+
+		// output
+		.deaths(deaths),
+		.reset_score(reset_score)
+		);
+
+endmodule
+
+// counts the number of deaths before resetting the score, max 3
+module deaths(CLOCK_50, strt, resetn,  outx0, outy0,
+						outx1, outy1,
+						outx2, outy2,
+						deaths, reset_score);
+	input CLOCK_50;
+	input strt;
+	input resetn;
+
+	input [7:0] outx0;
+	input [6:0] outy0;
+
+	input [7:0] outx1;
+	input [6:0] outy1;
+
+	input [7:0] outx2;
+	input [6:0] outy2;
+
+	output reg [1:0]deaths;
+	output reg reset_score;
+
+	always@(*)
+	begin
+		if(strt)
+			deaths <= 2'b0;
+		if(((outx0 == outx1) && (outy0 == outy1)) || ((outx0 == outx2) && (outy0 == outy2)))
+			deaths <= deaths + 1'b1;
+
+		if(deaths == 2'd3)
+			begin
+				reset_score <= 1'b1;
+				deaths <= 2'b0;
+			end
+		else
+			reset_score <= 1'b0;
+	end
+
 endmodule
 
 // char module inclusing fsm and datapath, uses keys for movement
-module baby( CLOCK_50, resetn, xin, yin, colourin, cycleload, movement, outx, outy, outcolour, writeEn);
+module baby( CLOCK_50, resetn, xin, yin, colourin, cycleload, movement, outx, outy, outcolour, writeEn, strt);
         input CLOCK_50;
         input resetn;
 
@@ -253,44 +374,47 @@ module baby( CLOCK_50, resetn, xin, yin, colourin, cycleload, movement, outx, ou
         output [2:0] outcolour;
         output [0:0] writeEn;
 
+		output strt;
+
         wire [0:0] ld, update, divider_go;
 
+		assign strt = ld;
         // rate divider for speed
         rateDivider rd(
-        .clock(CLOCK_50),
-        .cycleload(cycleload),
-        .Enable(divider_go)
+	        .clock(CLOCK_50),
+	        .cycleload(cycleload),
+	        .Enable(divider_go)
         );
 
         // Instansiate FSM control
         bee_control C(
-                 .clk(CLOCK_50),
-                 .resetn(resetn),
+             .clk(CLOCK_50),
+             .resetn(resetn),
 
-                 //clock from rate divider for speed
-                 .go(divider_go),
+             //clock from rate divider for speed
+             .go(divider_go),
 
-                 .ld(ld),
-                 .update(update)
+             .ld(ld),
+             .update(update)
         );
 
         // Instansiate datapath
         boy_datapath D(
-                .clk(CLOCK_50),
-                .ld(ld),
-                .update(update),
+            .clk(CLOCK_50),
+            .ld(ld),
+            .update(update),
 
-                .xin(xin),
-                .yin(yin),
-                .colourin(colourin),
+            .xin(xin),
+            .yin(yin),
+            .colourin(colourin),
 
-                .movement(movement),
+            .movement(movement),
 
-                .b_x(outx),
-                .b_y(outy),
-                .outcolour(outcolour),
-                .writeEn(writeEn)
-                );
+            .b_x(outx),
+            .b_y(outy),
+            .outcolour(outcolour),
+            .writeEn(writeEn)
+        );
 
 endmodule
 
@@ -537,5 +661,35 @@ module rateDivider(clock, cycleload, Enable);
     end
 
     assign Enable = (q == 28'b0000000000000000000000000000) ? 1'b1 : 1'b0;
+
+endmodule
+
+//hex display
+module hex_display(IN, OUT);
+  input [3:0] IN;
+  output reg [6:0] OUT;
+
+  always @(*)
+  begin
+    case(IN[3:0])
+      4'b0000: OUT = 7'b1000000;
+      4'b0001: OUT = 7'b1111001;
+      4'b0010: OUT = 7'b0100100;
+      4'b0011: OUT = 7'b0110000;
+      4'b0100: OUT = 7'b0011001;
+      4'b0101: OUT = 7'b0010010;
+      4'b0110: OUT = 7'b0000010;
+      4'b0111: OUT = 7'b1111000;
+      4'b1000: OUT = 7'b0000000;
+      4'b1001: OUT = 7'b0011000;
+      4'b1010: OUT = 7'b0001000;
+      4'b1011: OUT = 7'b0000011;
+      4'b1100: OUT = 7'b1000110;
+      4'b1101: OUT = 7'b0100001;
+      4'b1110: OUT = 7'b0000110;
+      4'b1111: OUT = 7'b0001110;
+      default: OUT = 7'b0111111;
+    endcase
+  end
 
 endmodule
