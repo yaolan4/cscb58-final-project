@@ -1,0 +1,35 @@
+
+State Machine - |bounce|control:bee3_control|current_state
+Name current_state.S_DRAW current_state.S_UPDATE current_state.S_CLEAR current_state.S_WAIT 
+current_state.S_CLEAR 0 0 0 0 
+current_state.S_UPDATE 0 1 1 0 
+current_state.S_DRAW 1 0 1 0 
+current_state.S_WAIT 0 0 1 1 
+
+State Machine - |bounce|control:bee2_control|current_state
+Name current_state.S_DRAW current_state.S_UPDATE current_state.S_CLEAR current_state.S_WAIT 
+current_state.S_CLEAR 0 0 0 0 
+current_state.S_UPDATE 0 1 1 0 
+current_state.S_DRAW 1 0 1 0 
+current_state.S_WAIT 0 0 1 1 
+
+State Machine - |bounce|control:bee1_control|current_state
+Name current_state.S_DRAW current_state.S_UPDATE current_state.S_CLEAR current_state.S_WAIT 
+current_state.S_CLEAR 0 0 0 0 
+current_state.S_UPDATE 0 1 1 0 
+current_state.S_DRAW 1 0 1 0 
+current_state.S_WAIT 0 0 1 1 
+
+State Machine - |bounce|control:bee0_control|current_state
+Name current_state.S_DRAW current_state.S_UPDATE current_state.S_CLEAR current_state.S_WAIT 
+current_state.S_CLEAR 0 0 0 0 
+current_state.S_UPDATE 0 1 1 0 
+current_state.S_DRAW 1 0 1 0 
+current_state.S_WAIT 0 0 1 1 
+
+State Machine - |bounce|control:player_control|current_state
+Name current_state.S_DRAW current_state.S_UPDATE current_state.S_CLEAR current_state.S_WAIT 
+current_state.S_CLEAR 0 0 0 0 
+current_state.S_UPDATE 0 1 1 0 
+current_state.S_DRAW 1 0 1 0 
+current_state.S_WAIT 0 0 1 1 
