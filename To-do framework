@@ -1,9 +1,0 @@
-We need to separate the input to the vga because only one coordinate can be sent at a time.
-
-Make the bees 'invisable' until we use it and if player hits it and still has lives, reduce the life.
-
-If hit wire [0:0]safety = 1'b1; if ON then hitting doesnt lose lives for a few seconds (counter), else hitting loses lives.
-
-If hit and 0 lives: game over.
-
-
