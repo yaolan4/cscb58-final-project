@@ -1,2 +1,0 @@
-Warning (10268): Verilog HDL information at start.v(316): always construct contains both blocking and non-blocking assignments File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 316
-Info (10281): Verilog HDL Declaration information at start.v(287): object "clear" differs only in case from object "CLEAR" in the same scope File: /courses/courses/cscb58w18/sunyuan8/project/cscb58-final-project/schematic/start.v Line: 287
