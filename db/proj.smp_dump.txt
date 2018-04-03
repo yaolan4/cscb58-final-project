@@ -1,8 +1,0 @@
-
-State Machine - |proj|control:ctrl_player|current_state
-Name current_state.UPDATE_XY current_state.MOVE current_state.CLEAR current_state.SELECT_DIR current_state.RESET 
-current_state.RESET 0 0 0 0 0 
-current_state.SELECT_DIR 0 0 0 1 1 
-current_state.CLEAR 0 0 1 0 1 
-current_state.MOVE 0 1 0 0 1 
-current_state.UPDATE_XY 1 0 0 0 1 

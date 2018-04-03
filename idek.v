@@ -1,0 +1,168 @@
+//////////////////////////////////////// DATAPATH /////////////////////////////////////////////////////
+
+module datapath(
+    input clk,
+    input update,
+    input clear,
+	input waiting,
+    input resetn,
+    input [2:0] c_in,
+    input [6:0] x_in,
+    input [6:0] y_in,
+    input [3:0] dir_in,
+    output [6:0] x_out,
+    output [6:0] y_out,
+    output reg [2:0] c_out,
+    output reg writeEn,
+    output reg done
+    );
+
+    // input registers
+    reg [3:0] offset = 4'b0000;
+    reg [2:0] c_val;
+    reg [6:0] x_val;
+    reg [6:0] y_val;
+	 
+
+    // Registers x, y, c with respective input logic
+    always@(posedge clk) begin
+	 
+		writeEn = 1'b0;
+
+        if (~resetn)
+            begin
+                x_val = x_in;
+                y_val = y_in;
+            end
+
+        else begin
+            if (clear)
+                begin
+                    c_out <= 3'b000;
+                    writeEn <= 1'b1;
+                end
+            else if (update)  // UPDATE HERE
+                begin
+                    writeEn =	 1'b0;
+                    if (dir_in[0] == 1'b1)  // RIGHT
+                        x_val = x_val + 1;
+                    if (dir_in[3] == 1'b1)	// LEFT
+                        x_val = x_val - 1;
+                    if (dir_in[2] == 1'b1)	// DOWN
+                        y_val = y_val + 1;
+                    if (dir_in[1] == 1'b1)	// UP
+                        y_val = y_val - 1;
+                end 
+            else if (~waiting)      // DRAWING STATE
+                begin
+                    writeEn = 1'b1;
+                    c_out = c_in;
+                end
+                
+        end
+    end
+
+    // Increment offset, first 2 bits for x,2nd for y
+    always@(posedge clk) 
+	 begin
+			if (waiting || update)
+				done = 1'b0;
+			
+        if (~waiting && ~update && ~done) 
+		  begin
+		  
+            if (offset == 4'b1111)
+            begin
+                offset <= 4'b0000;
+                done = 1'b1;
+            end 
+            else
+                offset = offset + 1'b1;
+        end
+    end
+
+        assign x_out = x_val + offset[1:0];
+        assign y_out = y_val + offset[3:2];
+
+endmodule // datapath
+
+///////////////////////////////////////////////////////// CONTROL ///////////////////////////////////////////////////////////
+
+module control(
+    input clk,
+	input slowClk,
+    input resetn,
+    input done,
+	input moved,
+    output reg  clear,
+    output reg update,
+	output reg waiting,
+    output [4:0] led
+    );
+
+    reg [2:0] current_state, next_state;
+
+    localparam  S_CLEAR   	= 5'd1,
+                S_UPDATE 	= 5'd2,	
+                S_DRAW      = 5'd3,
+				S_WAIT		= 5'd4;
+                //S_LOAD      = 5'd5; // DONT REMOVE EVERYTHING BREAKS
+
+    assign led [4:0] = current_state;
+
+    // Next state logic aka our state table
+    always@(*)
+    begin: state_table
+            case (current_state)
+                S_WAIT: next_state = ((moved && slowClk) || ~resetn) ? S_CLEAR : S_WAIT; // Loop in current state until go signal goes low
+                S_CLEAR: next_state = done ? (~resetn ? S_LOAD : S_UPDATE) : S_CLEAR; // Loop in current state until value is input
+                S_UPDATE : next_state = S_DRAW;
+                S_DRAW: next_state = done ? S_WAIT : S_DRAW; // Draw state, Go back to Load X
+                S_LOAD: next_state = S_WAIT;
+            default:     next_state = S_CLEAR;
+        endcase
+    end // state_table
+
+
+    // Output logic aka all of our datapath control signals
+    always @(*)
+    begin: enable_signals
+        // By default make all our signals 0
+        clear = 1'b0;
+        update = 1'b0;
+		waiting = 1'b0;
+        load = 1'b0;
+        case (current_state)
+			S_WAIT:     waiting = 1'b1;
+            S_CLEAR:    clear = 1'b1;
+            S_UPDATE:   update = 1'b1;
+            S_LOAD:     load = 1'b1;
+        endcase
+    end // enable_signals
+
+    // current_state registers
+    always@(posedge clk)
+    begin: state_FFs
+        current_state <= next_state;
+    end // state_FFS
+endmodule // control
+
+////////////////////////////////////////// RATE DIVIDER ////////////////////////////////////////////////////
+
+module rate_divider(clk, load_val, out);
+	input clk;
+	input [27:0] load_val;
+	output out;
+	
+	reg [27:0] count;
+	
+	assign out = (count == 28'h0000000) ? 1 : 0;
+	
+	always @(posedge clk)
+	begin
+		if (count == 28'h0000000)
+			count <= load_val;
+		else
+			count <= count - 1;
+	end
+endmodule 

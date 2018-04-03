@@ -1,2 +1,10 @@
-Warning (10268): Verilog HDL information at modules.v(31): always construct contains both blocking and non-blocking assignments File: /home/mustafa/Desktop/CSCB58P2/modules.v Line: 31
-Warning (10268): Verilog HDL information at modules.v(81): always construct contains both blocking and non-blocking assignments File: /home/mustafa/Desktop/CSCB58P2/modules.v Line: 81
+Warning (10268): Verilog HDL information at modules.v(31): always construct contains both blocking and non-blocking assignments File: /courses/courses/cscb58w18/quraishm/CSCB58P2/modules.v Line: 31
+Warning (10268): Verilog HDL information at modules.v(86): always construct contains both blocking and non-blocking assignments File: /courses/courses/cscb58w18/quraishm/CSCB58P2/modules.v Line: 86
+Info (10281): Verilog HDL Declaration information at bounce.v(36): object "HEX0" differs only in case from object "hex0" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 36
+Info (10281): Verilog HDL Declaration information at bounce.v(37): object "HEX1" differs only in case from object "hex1" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 37
+Info (10281): Verilog HDL Declaration information at bounce.v(38): object "HEX2" differs only in case from object "hex2" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 38
+Info (10281): Verilog HDL Declaration information at bounce.v(39): object "HEX3" differs only in case from object "hex3" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 39
+Info (10281): Verilog HDL Declaration information at bounce.v(40): object "HEX4" differs only in case from object "hex4" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 40
+Info (10281): Verilog HDL Declaration information at bounce.v(41): object "HEX5" differs only in case from object "hex5" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 41
+Info (10281): Verilog HDL Declaration information at bounce.v(42): object "HEX6" differs only in case from object "hex6" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 42
+Info (10281): Verilog HDL Declaration information at bounce.v(43): object "HEX7" differs only in case from object "hex7" in the same scope File: /courses/courses/cscb58w18/quraishm/CSCB58P2/bounce.v Line: 43
